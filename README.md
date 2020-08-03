@@ -5,12 +5,12 @@ ROS implementation of the paper [SARL*: Deep Reinforcement Learning based Human-
 
 ## Introduction
 We present an advanced version of the Socially Attentive Reinforcement Learning (SARL) algorithm, namely SARL*, to achieve human-aware navigation in indoor environments. Recently, deep RL has achieved great success in generating human-aware navigation policies. However, there exist some limitations in the real-world implementations: the learned navigation policies are limited to certain distances associated with the training process, and the simplification of the environment neglects obstacles other than humans. In this work, we improve the SARL algorithm by introducing a dynamic local goal setting mechanism and a map-based safe action space to tackle the above problems. 
-### Method Overview
+
+## Method Overview
 ![For more details, please refer to the paper.](https://github.com/LeeKeyu/sarl_star/blob/master/imgs/overview.png)
 
 
 ## System Setup
-
 
 We use the laser scanner **Hokuyo UTM-30LX** or **RPLIDAR-A2** as the sensor and [**TurtleBot 2**](http://wiki.ros.org/turtlebot/Tutorials/indigo)  as the robot platform.
 
@@ -135,6 +135,7 @@ volume={},
 number={},  
 pages={688-694},}
 ```
+## Questions
 
 If you have any questions, please contact "kyli@link.cuhk.edu.hk".
 
