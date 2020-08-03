@@ -3,13 +3,13 @@ ROS implementation of the paper [SARL*: Deep Reinforcement Learning based Human-
 
 **Video demonstration can be found on**   [Youtube](https://youtu.be/izrrctuUd-g) or [bilibili](https://www.bilibili.com/video/av74520445).
 
-### Introduction
+## Introduction
 We present an advanced version of the Socially Attentive Reinforcement Learning (SARL) algorithm, namely SARL*, to achieve human-aware navigation in indoor environments. Recently, deep RL has achieved great success in generating human-aware navigation policies. However, there exist some limitations in the real-world implementations: the learned navigation policies are limited to certain distances associated with the training process, and the simplification of the environment neglects obstacles other than humans. In this work, we improve the SARL algorithm by introducing a dynamic local goal setting mechanism and a map-based safe action space to tackle the above problems. 
 ### Method Overview
 ![For more details, please refer to the paper.](https://github.com/LeeKeyu/sarl_star/blob/master/imgs/overview.png)
 
 
-### System Setup
+## System Setup
 
 
 We use the laser scanner **Hokuyo UTM-30LX** or **RPLIDAR-A2** as the sensor and [**TurtleBot 2**](http://wiki.ros.org/turtlebot/Tutorials/indigo)  as the robot platform.
@@ -18,11 +18,11 @@ We use the laser scanner **Hokuyo UTM-30LX** or **RPLIDAR-A2** as the sensor and
 
 
 
-### Some Experiments
+## Some Experiments
 ![For more details, please refer to the paper.](https://github.com/LeeKeyu/sarl_star/blob/master/imgs/experiments.png)
 
 
-### Build & Install
+## Build & Install
 Our codes have been tested in Ubuntu 16.04 with Python 2.7. 
 1. Install [ROS kinetic](http://wiki.ros.org/kinetic/Installation/Ubuntu).
 2. Create and build a catkin workspace and download the codes into src/:
@@ -69,7 +69,7 @@ catkin_make
 source devel/setup.bash
 ```
 
-### Start the Navigation
+## Start the Navigation
 
 0. Before starting the navigation, make sure your PC is connected with Turtlebot2 and the lidar sensor (either Hokuyo or RPlidar).
 1. Bringup the turtlebot
@@ -123,7 +123,7 @@ roslaunch sarl_star_ros sarl_original_navigation.launch
 ```
 Note that we also add the implementation of map-based safe action space to the original SARL policy to ensure the safety of the robot in the real indoor environment.
 
-### Citation
+## Citation
 If you find our work useful in your research or if you use parts of this code, please consider citing our paper:
 ```
 @INPROCEEDINGS{8961764,  
@@ -135,7 +135,7 @@ volume={},
 number={},  
 pages={688-694},}
 ```
-### Questions
-Please contact "kyli@link.cuhk.edu.hk".
+
+If you have any questions, please contact "kyli@link.cuhk.edu.hk".
 
 
