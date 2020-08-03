@@ -132,7 +132,7 @@ roslaunch sarl_star_ros sarl_original_navigation.launch
 Note that we also add the implementation of map-based safe action space to the original SARL policy to ensure the safety of the robot in the real indoor environment.
 
 ## Citation
-If you find our work useful in your research or if you use parts of this code, please consider citing our paper:
+If you find our work useful in your research, please consider citing our paper:
 ```
 @INPROCEEDINGS{8961764,  
 author={K. {Li} and Y. {Xu} and J. {Wang} and M. Q. -. {Meng}},  
