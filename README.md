@@ -25,7 +25,7 @@ We use the laser scanner **Hokuyo UTM-30LX** or **RPLIDAR-A2** as the sensor and
 - **[Python-RVO2](https://github.com/sybrenstuvel/Python-RVO2)**: Crowd simulator using Optimal Reciprocal Collision Avoidance algorithm.
 - [**laser_filters**](http://wiki.ros.org/laser_filters): ROS package to filter out unwanted laser scans. (**optional**)
  - **[navigation](http://wiki.ros.org/navigation/Tutorials)**: ROS stack to provide AMCL localization, costmaps and basic path planners.
- - **[people](http://wiki.ros.org/people)**: ROS package to detect and track humans using sensor information.
+ - **[people](http://wiki.ros.org/people)**: ROS stack to detect and track humans using sensor information.
  - [**rplidar_ros**](http://wiki.ros.org/rplidar_ros): ROS package to use ROS with rplidar sensor.
  - **sarl_star_ros** : Core ROS package to run the SARL* navigation algorithm.
  - **[turtlebot_apps](http://wiki.ros.org/turtlebot_apps)**: ROS stack to use ROS with TurtleBot.
