@@ -1,0 +1,116 @@
+#!/usr/bin/python
+
+import roslib; roslib.load_manifest('roswiki_node')
+import rospy
+import sys
+import re
+import string
+
+CATEGORIES = ['sub', 'pub', 'srv', 'srv_called', 'param', 'param_set', 
+        'req_tf', 'prov_tf', 'goal', 'feedback', 'result', 'act_called']
+
+DEFAULT_ORDER = ['name', 'type', 'from', 'to', 'desc', 'default']
+
+GENERIC = '<([^>]*)>'   # <something>
+QSTRING = '"([^"]*)"'
+PSTRING = '["\']([^"\']*)["\']'   # not quite right, will break on "can't"
+NEXT_PARAM =  ',\s*([^\,]+)' # , something, 
+FINAL_PARAM = ',\s*([^\)]+)\)' # , something)
+
+
+PATTERNS = [
+#[CATEGORY,     PATTERN,                                            FIELD_LIST], 
+# Add empty patterns () for blank fields
+
+# C++
+ ['name',       'ros::init\([^\)]*' + QSTRING + '\)',               ['name']],  
+ ['sub',        'subscribe' + GENERIC + '\(' + QSTRING,             ["type", "name"]], 
+ ['sub',        'subscribe\(' + QSTRING,                            ["name"]], 
+ ['pub',        'advertise' + GENERIC + '\s*\(' + QSTRING,             ['type', 'name']],
+ ['param',      'param()\(' + QSTRING + ', [^,]+, ([^\)]+)\)',      ['type', 'name', 'default']], 
+ ['param',      'param' + GENERIC + '\(' + QSTRING + ', [^,]+' + FINAL_PARAM, ['type', 'name', 'default']],
+ ['param',      'getParam\(' + QSTRING,                             ['name']], 
+ ['param',      'param::get\(' + QSTRING,                           ['name']], 
+ ['param_set',  'setParam\(' + QSTRING,                             ['name']], 
+ ['param_set',  'param::set\(' + QSTRING,                           ['name']], 
+ ['srv',        'advertiseService\(' + QSTRING,                     ['name']], #C++ service *SHOULD SET TYPE
+ ['srv_called', 'advertiseService' + GENERIC + '\(' + QSTRING,      ['type', 'name']],
+
+# Python
+ ['name',       'rospy.init_node\(' + PSTRING,                      ['name']], 
+ ['sub',        'rospy.Subscriber\('+ PSTRING + NEXT_PARAM + ',',   ['name', 'type']], 
+ ['pub',        'rospy.Publisher\(' + PSTRING + FINAL_PARAM,        ['name', 'type']], 
+ ['param',      'rospy.get_param\(' + PSTRING + '\)',               ['name']],  
+ ['param',      'rospy.get_param\(' + PSTRING + FINAL_PARAM,        ['name', 'default']], 
+ ['param_set',  'rospy.set_param\(' + PSTRING,                      ['name']], 
+ ['srv',        'rospy.Service\(' + PSTRING + NEXT_PARAM + ',',     ['name', 'type']],
+ ['srv_called', 'rospy.ServiceProxy\(' + PSTRING + FINAL_PARAM,     ['name', 'type']],
+
+# Python or C++
+ ['req_tf',     'lookupTransform\(' + PSTRING + ', ' + PSTRING,     ['from', 'to']],
+ ['prov_tf',    'sendTransform\(.*' + NEXT_PARAM + FINAL_PARAM,     ['from', 'to']], # DOES NOT WORK
+]
+
+
+class RosWiki:
+    def __init__(self):
+        self.fields = {}
+
+    def parse(self, filename):
+        f = open(filename, 'r')
+        contents = f.read()
+
+        for (cat, pattern, fields) in PATTERNS:
+            for match in re.findall(pattern, contents):
+                mmap = {}
+                if len(fields) > 1:
+                    for key, value in zip(fields, match):
+                        mmap[key] = self.clean(value)
+                else:
+                    mmap[ fields[0] ] = match
+                self.add(cat, mmap)
+        
+
+    def add(self, category, mmap):
+        if category in self.fields:
+            self.fields[category].append(mmap)
+        else:
+            self.fields[category] = [mmap]
+
+    def clean(self, s):
+        needles = [['::', '/'], ['\n', ' ']]
+        for needle, replacement in needles:
+            s = string.replace(s, needle, replacement)
+        return s
+
+    def get_value(self, field):
+        if field in self.fields:
+            first = self.fields[field][0]
+            return first.values()[0]
+        return ''
+
+    def code(self):
+        s = '{{{\n#!clearsilver CS/NodeAPI\n'
+        s += 'name = %s\ndesc = %s\n'%( self.get_value('name'), self.get_value('desc'))
+        for category in CATEGORIES:
+            if category in self.fields and len(self.fields[category])>0:
+                s += "%s {\n"%category
+                for (i, mmap) in enumerate(self.fields[category]):
+                    for key in DEFAULT_ORDER:
+                        if key not in mmap:
+                            continue
+                        value = mmap[key]
+                        s += "  %d.%s = %s\n"%(i, key, value)
+                s += "}\n"
+
+        s += '}}}\n'
+        return s
+        
+if __name__ == '__main__':
+    wiki = RosWiki()
+    for arg in sys.argv[1:]:
+        wiki.parse(arg)
+    print wiki.code()
+
+
+

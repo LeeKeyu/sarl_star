@@ -1,0 +1,21 @@
+<launch>
+
+  <!-- Define laser type: hokuyo -->
+  <arg name="laser_type" default="hokuyo" />
+
+  <!-- laser driver -->
+  <include file="$(find turtlebot_navigation)/laser/driver/$(arg laser_type)_laser.launch" />
+
+  <!-- Gmapping -->
+  <arg name="custom_gmapping_launch_file" default="$(find turtlebot_navigation)/launch/includes/gmapping/$(arg laser_type)_gmapping.launch.xml"/>
+  <include file="$(arg custom_gmapping_launch_file)"/>
+
+  <!-- Move base -->
+  <include file="$(find turtlebot_navigation)/launch/includes/move_base.launch.xml"/>
+
+
+  <!-- rviz -->
+  <include file="$(find turtlebot_rviz_launchers)/launch/view_navigation.launch" />
+
+</launch>
+

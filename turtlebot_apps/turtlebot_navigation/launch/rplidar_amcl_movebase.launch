@@ -1,0 +1,40 @@
+<launch>
+
+  <!-- Define laser type-->
+  <arg name="laser_type" default="rplidar" />
+
+  <!-- laser driver -->
+  <include file="$(find turtlebot_navigation)/laser/driver/$(arg laser_type)_laser.launch" />
+
+  <!-- Map server -->
+  <arg name="map_file" default="/home/likeyu/map/rpl.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <!-- AMCL -->
+  <arg name="custom_amcl_launch_file" default="$(find turtlebot_navigation)/launch/includes/amcl/$(arg laser_type)_amcl.launch.xml"/>
+  <arg name="initial_pose_x" default="2.64"/>
+  <arg name="initial_pose_y" default="1.82"/>
+  <arg name="initial_pose_a" default="-0.5"/>
+  <include file="$(arg custom_amcl_launch_file)">
+    <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
+    <arg name="initial_pose_y" value="$(arg initial_pose_y)"/>
+    <arg name="initial_pose_a" value="$(arg initial_pose_a)"/>
+  </include>
+
+  <!-- Move base -->
+  <arg name="custom_param_file" default="$(find turtlebot_navigation)/param/$(arg laser_type)_costmap_params.yaml"/>
+  <include file="$(find turtlebot_navigation)/launch/includes/$(arg laser_type)_move_base.launch.xml">
+    <arg name="custom_param_file" value="$(arg custom_param_file)"/>
+  </include>
+
+  <!-- People Detector -->
+  <include file="$(find people_velocity_tracker)/launch/tracked_detector.launch" />
+
+  <!-- rviz -->
+  <include file="$(find turtlebot_rviz_launchers)/launch/view_navigation.launch" />
+
+
+
+
+</launch>
+

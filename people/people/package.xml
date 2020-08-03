@@ -1,0 +1,21 @@
+<package format="2">
+  <name>people</name>
+  <version>1.1.2</version>
+  <description>The people stack holds algorithms for perceiving people from a number of sensors.</description>
+  <maintainer email="dan@lazewatsky.com">Dan Lazewatsky</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/people</url>
+  <author>Caroline Pantofaru</author>
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>face_detector</exec_depend>
+  <exec_depend>leg_detector</exec_depend>
+  <exec_depend>people_msgs</exec_depend>
+  <exec_depend>people_tracking_filter</exec_depend>
+  <exec_depend>people_velocity_tracker</exec_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>

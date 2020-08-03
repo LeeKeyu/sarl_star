@@ -1,0 +1,19 @@
+<package>
+  <name>rosbaglive</name>
+  <version>0.2.4</version>
+  <description>Plays rosbags as though they were happening NOW.</description>
+  <author>David V. Lu!!</author>
+  <maintainer email="davidvlu@gmail.com">David V. Lu!!</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/rosbaglive</url>
+  <!-- <url type="bugtracker"></url> -->
+  <build_depend>rosbag</build_depend>
+  <build_depend>rospy</build_depend>
+
+  <run_depend>rospy</run_depend>
+  <run_depend>rosbag</run_depend>
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>

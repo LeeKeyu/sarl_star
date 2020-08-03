@@ -1,0 +1,13 @@
+publishers: []
+subscribers: []
+services:
+  - name: delete_map
+    type: world_canvas_msgs/DeleteMap
+  - name: list_maps
+    type: world_canvas_msgs/ListMaps
+  - name: publish_map
+    type: world_canvas_msgs/PublishMap
+  - name: rename_map
+    type: world_canvas_msgs/RenameMap
+action_clients: []
+action_servers: []

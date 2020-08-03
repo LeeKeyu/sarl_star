@@ -1,0 +1,9 @@
+publishers:
+  - name: camera/rgb/image_color/compressed_throttle
+    type: sensor_msgs/CompressedImage
+subscribers: []
+services: 
+  - name: turtlebot_follower/change_state
+    type: turtlebot_msgs/SetFollowState
+action_clients: []
+action_servers: []

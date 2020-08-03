@@ -1,0 +1,28 @@
+<package format="2">
+  <name>leg_detector</name>
+  <version>1.1.2</version>
+  <description>Leg Detector using a machine learning approach to find leg-like patterns of laser scanner readings.</description>
+  <author>Caroline Pantofaru</author>
+  <maintainer email="davidvlu@gmail.com">David V. Lu!!</maintainer>
+  <license>BSD</license>
+  <url>http://ros.org/wiki/leg_detector</url>  
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>bfl</depend>
+  <depend>dynamic_reconfigure</depend>
+  <depend>geometry_msgs</depend>
+  <depend>image_geometry</depend>
+  <depend>laser_geometry</depend>
+  <depend>message_filters</depend>
+  <depend>people_msgs</depend>
+  <depend>people_tracking_filter</depend>
+  <depend>roscpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>std_srvs</depend>
+  <depend>tf</depend>
+  <depend>visualization_msgs</depend>
+  <exec_depend>laser_filters</exec_depend>
+  <exec_depend>map_laser</exec_depend>
+
+</package>

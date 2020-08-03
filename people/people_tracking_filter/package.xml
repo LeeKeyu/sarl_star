@@ -1,0 +1,22 @@
+<package format="2">
+  <name>people_tracking_filter</name>
+  <version>1.1.2</version>
+  <description>
+  A collection of filtering tools for tracking people's locations
+  </description>
+  <author>Caroline Pantofaru</author>
+  <maintainer email="davidvlu@gmail.com">David V. Lu!!</maintainer>
+  <license>BSD</license>
+  <url>http://ros.org/wiki/people_tracking_filter</url>  
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>bfl</depend>
+  <depend>geometry_msgs</depend>
+  <depend>message_filters</depend>
+  <depend>people_msgs</depend>
+  <depend>roscpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>tf</depend>
+</package>

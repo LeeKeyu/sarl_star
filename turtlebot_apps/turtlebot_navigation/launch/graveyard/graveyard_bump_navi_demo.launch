@@ -1,0 +1,42 @@
+<!--
+  Blind navigation demo; try to use navi stack just with bumper and cliff sensors.
+
+  Before launching this:
+    roslaunch turtlebot_bringup minimal.launch
+  
+  TODO: this app will only work on turtlebot2. We need to make bump2pcl work for both
+  turtlebot2 and create. It also needs a good setup for the safety_controller.launch.
+  i.e. a fair bit of work is needed.
+ -->
+<launch>
+  <include file="$(find turtlebot_bringup)/launch/includes/$(arg base)/_safety_controller.launch"/>
+
+  <include file="$(find turtlebot_navigation)/launch/includes/_move_base.launch"/>
+
+  <!-- We are blind, so... do not run! this limit is tolerably safe for cliffs -->
+  <param name="navigation_velocity_smoother/max_vel_x" value="0.4"/>
+
+  <!--
+    Tweaks to adapt the move base node to local navigation:
+     - global costmap is also a rolling window, non-static map
+     - so it's referenced to odom, as the local costmap
+     - and it must be updated, dislike a static map
+     - we use a bigger costmap than that of the local planner
+     - replan often to contour hit obstacles
+  -->
+  <param name="move_base/global_costmap/global_frame" value="odom"/>
+  <param name="move_base/global_costmap/update_frequency" value="15.0"/>
+  <param name="move_base/global_costmap/publish_frequency" value="2.0"/>
+  <param name="move_base/global_costmap/static_map" value="false"/>
+  <param name="move_base/global_costmap/rolling_window" value="true"/>
+  <param name="move_base/global_costmap/width" value="10.0"/>
+  <param name="move_base/global_costmap/height" value="10.0"/>
+  <param name="move_base/global_costmap/resolution" value="0.02"/>
+  <param name="move_base/global_costmap/origin_x" value="0.0"/>
+  <param name="move_base/global_costmap/origin_y" value="0.0"/>
+  <param name="move_base/global_costmap/observation_sources" value="bump"/>
+  <param name="move_base/local_costmap/observation_sources" value="bump"/>
+  <param name="move_base/local_costmap/update_frequency" value="15.0"/>
+  <param name="move_base/local_costmap/resolution" value="0.02"/>
+  <param name="move_base/planner_frequency" value="10.0"/>
+</launch>

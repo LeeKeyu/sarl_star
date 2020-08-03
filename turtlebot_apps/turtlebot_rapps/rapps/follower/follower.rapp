@@ -1,0 +1,6 @@
+display:          Follower
+description:      Take the TurtleBot for a stroll. TurtleBot will follow whatever is in front of it.
+compatibility:    rocon:/turtlebot
+launch:           follower.launch
+public_interface: follower.interface
+icon:             follower_bubble_icon.png

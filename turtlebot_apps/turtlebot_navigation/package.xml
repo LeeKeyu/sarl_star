@@ -1,0 +1,31 @@
+<package>
+  <name>turtlebot_navigation</name>
+  <version>2.3.7</version>
+  <description>turtlebot_navigation</description>
+  <maintainer email="turtlebot@osrfoundation.org">OSRF</maintainer>
+  <license>BSD</license>
+  <url type="website">http://ros.org/wiki/turtlebot_navigation</url>
+  <url type="repository">https://github.com/turtlebot/turtlebot_apps</url>
+  <url type="bugtracker">https://github.com/turtlebot/turtlebot_apps/issues</url>
+  <author>Tully Foote</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <build_depend>tf</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+
+  <run_depend>tf</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>move_base</run_depend>
+  <run_depend>map_server</run_depend>  
+  <run_depend>amcl</run_depend>
+  <run_depend>gmapping</run_depend>
+  <run_depend>turtlebot_bringup</run_depend>
+  <run_depend>dwa_local_planner</run_depend>
+
+  <export>
+
+  </export>
+</package>

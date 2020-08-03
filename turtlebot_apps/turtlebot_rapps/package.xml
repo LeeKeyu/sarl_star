@@ -1,0 +1,54 @@
+<package>
+  <name>turtlebot_rapps</name>
+  <version>2.3.7</version>
+  <description>The core set of turtlebot 'app manager' apps are defined in this package. </description>
+
+  <maintainer email="stonier@rnd.yujinrobot.com">Daniel Stonier</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/turtlebot_rapps</url> 
+  <url type="repository">https://github.com/turtlebot/turtlebot_apps</url>
+  <url type="bugtracker">https://github.com/turtlebot/turtlebot_apps/issues</url>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>kobuki_auto_docking</run_depend>
+  <run_depend>turtlebot_bringup</run_depend>
+  <run_depend>turtlebot_follower</run_depend>
+  <run_depend>turtlebot_navigation</run_depend>
+  <!--run_depend>turtlebot_panorama</run_depend-->
+  <run_depend>turtlebot_teleop</run_depend>
+  <run_depend>robot_pose_publisher</run_depend>
+
+  <!-- for navigation apps -->
+  <run_depend>warehouse_ros</run_depend>
+<!--  <run_depend>map_store</run_depend>-->
+  <run_depend>world_canvas_server</run_depend>
+  <run_depend>tf</run_depend>
+
+  <!-- android_teleop -->
+  <run_depend>compressed_image_transport</run_depend>
+  <run_depend>topic_tools</run_depend>
+  <export>
+    <rocon_app>rapps/make_a_map/make_a_map.rapp</rocon_app>
+    <rocon_app>rapps/make_a_map/qt_make_a_map.rapp</rocon_app>
+
+    <rocon_app>rapps/map_nav/map_nav.rapp</rocon_app>
+    <rocon_app>rapps/map_nav/qt_map_nav.rapp</rocon_app>
+
+    <rocon_app>rapps/waypoint_nav/waypoint_nav.rapp</rocon_app>
+
+    <rocon_app>rapps/map_manager/map_manager.rapp</rocon_app>
+    <rocon_app>rapps/teleop/teleop.rapp</rocon_app>
+    <rocon_app>rapps/video_teleop/video_teleop.rapp</rocon_app>
+    <rocon_app>rapps/xbox360_teleop/xbox360_teleop.rapp</rocon_app>
+    <rocon_app>rapps/ps3_teleop/ps3_teleop.rapp</rocon_app>
+
+    <rocon_app>rapps/auto_docking/auto_docking.rapp</rocon_app>
+    <!--rocon_app>rapps/panorama/panorama.rapp</rocon_app-->
+    <rocon_app>rapps/follower/follower.rapp</rocon_app>
+    <rocon_app>rapps/3dsensor/3dsensor.rapp</rocon_app>
+  </export>
+
+</package>
