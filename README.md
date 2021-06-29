@@ -24,7 +24,7 @@ We use the laser scanner **Hokuyo UTM-30LX** or **RPLIDAR-A2** as the sensor and
 ## Code Structure
 - **[Python-RVO2](https://github.com/sybrenstuvel/Python-RVO2)**: Crowd simulator using Optimal Reciprocal Collision Avoidance algorithm.
 - [**laser_filters**](http://wiki.ros.org/laser_filters): ROS package to filter out unwanted laser scans. (**optional**)
- - **[navigation](http://wiki.ros.org/navigation/Tutorials)**: Modified ROS navigation stack to provide AMCL localization, costmaps and basic path planners. Note that our dynamic local goal setting algorithm is implemented in navigation/dwa_local_planner/src/dwa_planner_ros.cpp. Therefore, if you have installed the original ROS navigation stack before, we suggest that you uninstall it and use catkin_make in our repository to compile navigation stack in this project to make sure that our modification make effect.
+ - **[navigation](http://wiki.ros.org/navigation/Tutorials)**: Modified ROS navigation stack to provide AMCL localization, costmaps and basic path planners. **Note that** our dynamic local goal setting algorithm is implemented in navigation/dwa_local_planner/src/dwa_planner_ros.cpp. Therefore, if you have installed the original ROS navigation stack before, we suggest that you uninstall it and build the stack in our repository (following the steps in the next part "Build & Install") to make sure that our modification make effect.
  - **[people](http://wiki.ros.org/people)**: ROS stack to detect and track humans using sensor information.
  - [**rplidar_ros**](http://wiki.ros.org/rplidar_ros): ROS package to use ROS with rplidar sensor.
  - **sarl_star_ros** : Core ROS package to run the SARL* navigation algorithm.
