@@ -135,13 +135,14 @@ Note that we also add the implementation of map-based safe action space to the o
 If you find our work useful in your research, please consider citing our paper:
 ```
 @INPROCEEDINGS{8961764,  
-author={K. {Li} and Y. {Xu} and J. {Wang} and M. Q. -. {Meng}},  
+author={Li, Keyu and Xu, Yangxin and Wang, Jiankun and Meng, Max Q.-H.},  
 booktitle={2019 IEEE International Conference on Robotics and Biomimetics (ROBIO)},   
 title={SARL∗: Deep Reinforcement Learning based Human-Aware Navigation for Mobile Robot in Indoor Environments},   
 year={2019},  
 volume={},  
 number={},  
-pages={688-694},}
+pages={688-694},  
+doi={10.1109/ROBIO49542.2019.8961764}}
 ```
 ## Questions
 
