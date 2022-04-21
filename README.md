@@ -131,6 +131,14 @@ roslaunch sarl_star_ros sarl_original_navigation.launch
 ```
 Note that we also add the implementation of map-based safe action space to the original SARL policy to ensure the safety of the robot in the real indoor environment.
 
+4. About customizing the parameters in the SARL* algorithm:
+
+ The RL params can be set in the config files in sarl_star/sarl_star_ros/CrowdNav/crowd_nav/configs/.
+ 
+ The ROS navigation params are generally defined in .xml and .yaml files (e.g.,  sarl_star/turtlebot_apps/turtlebot_navigation/param/config/odom/local_costmap_params.yaml). To find the exact config files and change the values of params, please look at the launch files used.
+ 
+ The distance "d" in the local goal setting method is 5m by default. It can be customized in sarl_star/navigation/base_local_planner/src/goal_functions.cpp by changing the value of "dist_threshold" to "d/2", given your desired "d".
+
 ## Citation
 If you find our work useful in your research, please consider citing our paper:
 ```
